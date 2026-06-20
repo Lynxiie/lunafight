@@ -1,4 +1,4 @@
-import {Component, ElementRef, inject, ViewChild} from '@angular/core';
+import {Component, ElementRef, inject, ViewChild, ChangeDetectionStrategy} from '@angular/core';
 import {PokemonService} from '../../services/pokemon-service';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {AttackService} from '../../services/attack-service';
@@ -19,6 +19,7 @@ import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
   ],
   templateUrl: './pokemon-attack-select.html',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './pokemon-attack-select.scss'
 })
 export class PokemonAttackSelect {

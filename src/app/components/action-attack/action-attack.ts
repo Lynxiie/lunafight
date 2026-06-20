@@ -1,4 +1,4 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import {Component, ElementRef, ViewChild, ChangeDetectionStrategy} from '@angular/core';
 import {MatCheckbox} from "@angular/material/checkbox";
 import {MatFormField, MatInput, MatLabel} from "@angular/material/input";
 import {MatRadioButton, MatRadioGroup} from "@angular/material/radio";
@@ -32,6 +32,7 @@ import {CranInput} from '../cran-input/cran-input';
   ],
   templateUrl: './action-attack.html',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './action-attack.scss'
 })
 export class ActionAttack {

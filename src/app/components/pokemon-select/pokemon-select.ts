@@ -1,4 +1,4 @@
-import {Component, ElementRef, inject, ViewChild} from '@angular/core';
+import {Component, ElementRef, inject, ViewChild, ChangeDetectionStrategy} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {MatAutocomplete, MatAutocompleteTrigger, MatOption} from '@angular/material/autocomplete';
 import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
@@ -17,6 +17,7 @@ import {PokemonService} from '../../services/pokemon-service';
   ],
   templateUrl: './pokemon-select.html',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './pokemon-select.scss'
 })
 export class PokemonSelect {

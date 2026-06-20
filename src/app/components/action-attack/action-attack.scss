@@ -1,0 +1,29 @@
+.grid-container-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 5px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 115px);
+  grid-gap: 5px;
+}
+
+.grid-container-bottom {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 200px);
+  grid-gap: 5px;
+}
+
+.pokemon-column {
+  grid-column: span 1;
+}
+
+.sprite-url-column {
+  grid-column: span 7;
+}
+
+.alterations {
+  grid-column: 1/4;
+}

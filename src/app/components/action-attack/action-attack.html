@@ -1,0 +1,113 @@
+<div class="grid-container-top">
+  <app-pokemon-select (focusout)="addPokemon($event)" class="pokemon-column"></app-pokemon-select>
+
+  <mat-form-field [floatLabel]="'always'" class="sprite-url-column">
+    <mat-label>Sprite URL (sprite par défaut si non rempli)</mat-label>
+    <input matInput matNativeControl type="url">
+  </mat-form-field>
+
+</div>
+
+<div class="grid-container">
+  <mat-form-field [floatLabel]="'always'">
+    <mat-label>NIV</mat-label>
+    <input matInput matNativeControl type="number" min="5" max="100" required>
+  </mat-form-field>
+
+  <mat-form-field [floatLabel]="'always'">
+    <mat-label>PV actuel</mat-label>
+    <input matInput matNativeControl type="number" min="0" required>
+  </mat-form-field>
+
+  <mat-form-field [floatLabel]="'always'">
+    <mat-label>PV max</mat-label>
+    <input matInput matNativeControl type="number" min="0" required>
+  </mat-form-field>
+
+  <mat-form-field [floatLabel]="'always'">
+    <mat-label>ATK (base)</mat-label>
+    <input matInput matNativeControl type="number" min="0" required>
+  </mat-form-field>
+
+  <app-cran-input [label]="'ATK (cran)'"></app-cran-input>
+
+  <mat-form-field [floatLabel]="'always'">
+    <mat-label>DEF (base)</mat-label>
+    <input matInput matNativeControl type="number" min="0" required>
+  </mat-form-field>
+
+  <app-cran-input [label]="'DEF (cran)'"></app-cran-input>
+
+  <mat-form-field [floatLabel]="'always'">
+    <mat-label>ATK SPE (base)</mat-label>
+    <input matInput matNativeControl type="number" min="0" required>
+  </mat-form-field>
+
+  <app-cran-input [label]="'ATK SPE (cran)'"></app-cran-input>
+
+  <mat-form-field [floatLabel]="'always'">
+    <mat-label>DEF SPE (base)</mat-label>
+    <input matInput matNativeControl type="number" min="0" required>
+  </mat-form-field>
+
+  <app-cran-input [label]="'DEF SPE (cran)'"></app-cran-input>
+
+  <mat-form-field [floatLabel]="'always'">
+    <mat-label>VIT (base)</mat-label>
+    <input matInput matNativeControl type="number" min="0" required>
+  </mat-form-field>
+
+  <app-cran-input [label]="'VIT (cran)'"></app-cran-input>
+
+  <app-cran-input [label]="'PREC'"></app-cran-input>
+
+  <app-cran-input [label]="'ESQ'"></app-cran-input>
+
+</div>
+
+<div class="grid-container-bottom">
+  <mat-form-field [floatLabel]="'always'">
+    <mat-label>Altération permanente</mat-label>
+    <mat-select [formControl]="alterationPerma">
+      @for (alteration of alterationsPerma; track alteration) {
+        <mat-option [value]="alteration">{{alteration}}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field [floatLabel]="'always'">
+    <mat-label>Altération volatile</mat-label>
+    <mat-select [formControl]="alterationVola" multiple>
+      @for (alteration of alterationsVola; track alteration) {
+        <mat-option [value]="alteration">{{alteration}}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field [floatLabel]="'always'">
+    <mat-label>Dégâts par tour</mat-label>
+    <mat-select [formControl]="degatTour" multiple>
+      @for (degat of degatsTour; track degat) {
+        <mat-option [value]="degat">{{degat}}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <app-pokemon-attack-select></app-pokemon-attack-select>
+
+  <mat-form-field [floatLabel]="'always'">
+    <mat-label>Cible</mat-label>
+    <input #targetInput
+           type="text"
+           matInput
+           [formControl]="targetName"
+           [matAutocomplete]="auto"
+           placeholder="Renseigner tous les Pokémon pour choisir l'adversaire"
+    >
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      @for (option of options; track option) {
+        <mat-option [value]="option">{{option}}</mat-option>
+      }
+    </mat-autocomplete>
+  </mat-form-field>
+</div>

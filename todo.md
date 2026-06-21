@@ -1,0 +1,24 @@
+- Cible que si l'attaque nécessite une cible
+- Affichage de toutes les erreurs
+  - Faire des tests
+- Gérer les combats
+  - Récupérer toutes les données
+  - Ordonner les actions
+  - Gérer les switch
+  - Gérer les objets
+  - Gérer les attaques
+    - Penser aux changements de stats
+    - Gérer les faiblesses résistances
+    - Faire les calculs de stats
+    - Gérer les attaques particulières
+    - Penser aux attaques avec switch
+- Gérer le temps sur le terrain
+- Afficher une pop-up de résultat à copier-coller
+- Afficher un récap de choses à penser
+  - Décompte état
+  - Décompte terrain
+  - Récap des PV restants
+  - Récap des crans
+- Faires des tests un peu partout
+- Liste des alterations + météo + dégat de tour en enum
+- Quand on passe de 1 vs 3 à 1 vs 2, supprimer le foe_3

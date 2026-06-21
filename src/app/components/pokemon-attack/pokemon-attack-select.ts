@@ -1,9 +1,10 @@
-import {Component, ElementRef, inject, ViewChild, ChangeDetectionStrategy} from '@angular/core';
+import {Component, ElementRef, inject, ViewChild, ChangeDetectionStrategy, Input} from '@angular/core';
 import {PokemonService} from '../../services/pokemon-service';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {AttackService} from '../../services/attack-service';
 import {MatAutocomplete, MatAutocompleteTrigger, MatOption} from '@angular/material/autocomplete';
 import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
+import {FieldTree, FormField} from '@angular/forms/signals';
 
 @Component({
   selector: 'app-pokemon-attack-select',
@@ -15,7 +16,8 @@ import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
     MatLabel,
     MatOption,
     ReactiveFormsModule,
-    MatFormField
+    MatFormField,
+    FormField
   ],
   templateUrl: './pokemon-attack-select.html',
   standalone: true,
@@ -30,6 +32,9 @@ export class PokemonAttackSelect {
   attackName = new FormControl('');
   options = this.attackService.getAllNames();
   filteredOptions: string[];
+
+  @Input()
+  field!: FieldTree<string, string, "writable">;
 
   constructor() {
     this.filteredOptions = this.options.slice();

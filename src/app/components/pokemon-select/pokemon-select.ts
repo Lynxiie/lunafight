@@ -1,8 +1,9 @@
-import {Component, ElementRef, inject, ViewChild, ChangeDetectionStrategy} from '@angular/core';
+import {Component, ElementRef, inject, ViewChild, ChangeDetectionStrategy, Input} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {MatAutocomplete, MatAutocompleteTrigger, MatOption} from '@angular/material/autocomplete';
 import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
 import {PokemonService} from '../../services/pokemon-service';
+import {FieldTree, FormField} from '@angular/forms/signals';
 
 @Component({
   selector: 'app-pokemon-select',
@@ -13,7 +14,8 @@ import {PokemonService} from '../../services/pokemon-service';
     MatInput,
     MatLabel,
     MatOption,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormField
   ],
   templateUrl: './pokemon-select.html',
   standalone: true,
@@ -26,9 +28,11 @@ export class PokemonSelect {
 
   @ViewChild('pokemonInput')
   input: ElementRef<HTMLInputElement> | undefined;
-  pokemonName = new FormControl('');
   options = this.pokemonService.getAllNames();
   filteredOptions: string[];
+
+  @Input()
+  field!: FieldTree<string, string, "writable">;
 
   constructor() {
     this.filteredOptions = this.options.slice();

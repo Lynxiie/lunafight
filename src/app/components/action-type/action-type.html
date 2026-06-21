@@ -5,7 +5,7 @@
 </mat-button-toggle-group>
 
 @if (actionType === 'attack') {
-  <app-action-attack></app-action-attack>
+  <app-action-attack [type]="type()" [index]="index()"></app-action-attack>
 } @else if (actionType === 'switch') {
   <app-action-switch></app-action-switch>
 } @else if (actionType === 'object') {

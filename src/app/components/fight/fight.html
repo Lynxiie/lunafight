@@ -1,4 +1,4 @@
-<mat-form-field [floatLabel]="'always'">
+<mat-form-field floatLabel='always'>
   <mat-select (selectionChange)="changeActionsNumber($event.value)" [(value)]="defaultActions">
     <mat-option value="1-1">1 vs 1</mat-option>
     <mat-option value="1-2">1 vs 2</mat-option>
@@ -15,7 +15,7 @@
 <h2>Joueur</h2>
 
 <ng-container>
-  @for (index of getPlayerActions(); track index) {
+  @for (index of getActions(playerActions); track index) {
     <h3>Action numéro {{index + 1}}</h3>
     <app-action-type type="player" [index]="index"></app-action-type>
   }
@@ -27,10 +27,10 @@
 <h2>Adversaire</h2>
 
 <ng-container>
-  @for (index of getFoeActions(); track index) {
+  @for (index of getActions(foeActions); track index) {
     <h3>Action numéro {{index + 1}}</h3>
-    <app-action-type></app-action-type>
+    <app-action-type type="foe" [index]="index"></app-action-type>
   }
 </ng-container>
 
-<button mat-raised-button color="primary" (click)="launchFight()">Combaaaaat !</button>
+<button mat-raised-button color='primary' (click)="launchFight()">Combaaaaat !</button>

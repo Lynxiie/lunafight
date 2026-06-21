@@ -6,13 +6,13 @@
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 115px);
+  grid-template-columns: repeat(auto-fill, 90px);
   grid-gap: 5px;
 }
 
 .grid-container-bottom {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 200px);
+  grid-template-columns: repeat(auto-fill, 175px);
   grid-gap: 5px;
 }
 

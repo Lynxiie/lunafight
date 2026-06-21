@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CranInput } from './cran-input';
+import { StageInput } from './stage-input.component';
 
-describe('CranInput', () => {
-  let component: CranInput;
-  let fixture: ComponentFixture<CranInput>;
+describe('StageInput', () => {
+  let component: StageInput;
+  let fixture: ComponentFixture<StageInput>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CranInput]
+      imports: [StageInput]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CranInput);
+    fixture = TestBed.createComponent(StageInput);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

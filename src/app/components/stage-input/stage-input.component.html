@@ -1,7 +1,7 @@
-<mat-form-field [floatLabel]="'always'">
+<mat-form-field floatLabel='always'>
   <mat-label>{{ label() }}</mat-label>
 
-    <mat-select disableRipple (valueChange)="setField($event)" [formField]="field">
+    <mat-select disableRipple [formField]="field">
       <mat-option value="6">6</mat-option>
       <mat-option value="5">5</mat-option>
       <mat-option value="4">4</mat-option>

@@ -1,14 +1,21 @@
+
 <!--{{attackForm.spriteUrl()}}-->
 <!--{{attackForm.spriteUrl().invalid()}}-->
 
-<!--@if (attackForm.spriteUrl().invalid()) {-->
-<!--    <p>{{attackForm.spriteUrl().errors()[0]}}</p>-->
+{{type()}}
+
+{{index()}}
+
+<!--{{actionService.getAttackModel(this.type(), this.index())}}-->
+
+<!--@if (attackForm.spriteUrl.invalid()) {-->
+<!--    <p>{{attackForm.spriteUrl.errors()[0].message}}</p>-->
 <!--}-->
 
 <div class="grid-container-top">
-  <app-pokemon-select (focusout)="addPokemon($event)" class="pokemon-column"></app-pokemon-select>
+  <app-pokemon-select (focusout)="addPokemon($event)" class="pokemon-column" [field]="attackForm.pokemonSpecies"></app-pokemon-select>
 
-  <mat-form-field [floatLabel]="'always'" class="sprite-url-column">
+  <mat-form-field floatLabel='always' class="sprite-url-column">
     <mat-label>Sprite URL (sprite par défaut si non rempli)</mat-label>
     <input matInput matNativeControl type="url" [formField]="attackForm.spriteUrl">
   </mat-form-field>
@@ -16,100 +23,100 @@
 </div>
 
 <div class="grid-container">
-  <mat-form-field [floatLabel]="'always'">
+  <mat-form-field floatLabel='always'>
     <mat-label>NIV</mat-label>
     <input matInput matNativeControl type="number" [formField]="attackForm.level">
   </mat-form-field>
 
-  <mat-form-field [floatLabel]="'always'">
+  <mat-form-field floatLabel='always'>
     <mat-label>PV actuel</mat-label>
     <input matInput matNativeControl type="number" [formField]="attackForm.pvActual">
   </mat-form-field>
 
-  <mat-form-field [floatLabel]="'always'">
+  <mat-form-field floatLabel='always'>
     <mat-label>PV max</mat-label>
     <input matInput matNativeControl type="number" [formField]="attackForm.pvMax">
   </mat-form-field>
 
-  <mat-form-field [floatLabel]="'always'">
+  <mat-form-field floatLabel='always'>
     <mat-label>ATK (base)</mat-label>
     <input matInput matNativeControl type="number" [formField]="attackForm.atk">
   </mat-form-field>
 
-  <app-cran-input [label]="'ATK (cran)'" [field]="attackForm.atkCran"></app-cran-input>
+  <app-cran-input [label]="'ATK (cran)'" [field]="attackForm.atkStage"></app-cran-input>
 
-  <mat-form-field [floatLabel]="'always'">
+  <mat-form-field floatLabel='always'>
     <mat-label>DEF (base)</mat-label>
     <input matInput matNativeControl type="number" [formField]="attackForm.def">
   </mat-form-field>
 
-<!--  <app-cran-input [label]="'DEF (cran)'" [formFieldInput]="attackForm.defCran"></app-cran-input>-->
+  <app-cran-input [label]="'DEF (cran)'" [field]="attackForm.defStage"></app-cran-input>
 
-  <mat-form-field [floatLabel]="'always'">
+  <mat-form-field floatLabel='always'>
     <mat-label>ATK SPE (base)</mat-label>
     <input matInput matNativeControl type="number" [formField]="attackForm.atkSpe">
   </mat-form-field>
 
-<!--  <app-cran-input [label]="'ATK SPE (cran)'" [formFieldInput]="attackForm.atkSpeCran"></app-cran-input>-->
+  <app-cran-input [label]="'ATK SPE (cran)'" [field]="attackForm.atkSpeStage"></app-cran-input>
 
-  <mat-form-field [floatLabel]="'always'">
+  <mat-form-field floatLabel='always'>
     <mat-label>DEF SPE (base)</mat-label>
     <input matInput matNativeControl type="number" [formField]="attackForm.defSpe">
   </mat-form-field>
 
-<!--  <app-cran-input [label]="'DEF SPE (cran)'" [formFieldInput]="attackForm.defSpeCran"></app-cran-input>-->
+  <app-cran-input [label]="'DEF SPE (cran)'" [field]="attackForm.defSpeStage"></app-cran-input>
 
-  <mat-form-field [floatLabel]="'always'">
+  <mat-form-field floatLabel='always'>
     <mat-label>VIT (base)</mat-label>
     <input matInput matNativeControl type="number" [formField]="attackForm.vit">
   </mat-form-field>
 
-<!--  <app-cran-input [label]="'VIT (cran)'" [formFieldInput]="attackForm.vitCran"></app-cran-input>-->
+  <app-cran-input [label]="'VIT (cran)'" [field]="attackForm.vitStage"></app-cran-input>
 
-<!--  <app-cran-input [label]="'PREC'" [formFieldInput]="attackForm.prec"></app-cran-input>-->
+  <app-cran-input [label]="'PREC'" [field]="attackForm.prec"></app-cran-input>
 
-<!--  <app-cran-input [label]="'ESQ'" [formFieldInput]="attackForm.esq"></app-cran-input>-->
+  <app-cran-input [label]="'ESQ'" [field]="attackForm.esq"></app-cran-input>
 
 </div>
 
 <div class="grid-container-bottom">
-  <mat-form-field [floatLabel]="'always'">
+  <mat-form-field floatLabel='always'>
     <mat-label>Altération permanente</mat-label>
-    <mat-select [formControl]="alterationPerma">
+    <mat-select [formField]="attackForm.alterationPerma">
       @for (alteration of alterationsPerma; track alteration) {
         <mat-option [value]="alteration">{{alteration}}</mat-option>
       }
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field [floatLabel]="'always'">
+  <mat-form-field floatLabel='always'>
     <mat-label>Altération volatile</mat-label>
-    <mat-select [formControl]="alterationVola" multiple>
+    <mat-select [formField]="attackForm.altertationTempo" multiple>
       @for (alteration of alterationsVola; track alteration) {
         <mat-option [value]="alteration">{{alteration}}</mat-option>
       }
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field [floatLabel]="'always'">
+  <mat-form-field floatLabel='always'>
     <mat-label>Dégâts par tour</mat-label>
-    <mat-select [formControl]="degatTour" multiple>
+    <mat-select [formField]="attackForm.turnDamage" multiple>
       @for (degat of degatsTour; track degat) {
         <mat-option [value]="degat">{{degat}}</mat-option>
       }
     </mat-select>
   </mat-form-field>
 
-  <app-pokemon-attack-select></app-pokemon-attack-select>
+  <app-pokemon-attack-select [field]="attackForm.attackName"></app-pokemon-attack-select>
 
-  <mat-form-field [floatLabel]="'always'">
+  <mat-form-field floatLabel='always'>
     <mat-label>Cible</mat-label>
     <input #targetInput
            type="text"
            matInput
-           [formControl]="targetName"
            [matAutocomplete]="auto"
            placeholder="Renseigner tous les Pokémon pour choisir l'adversaire"
+           [formField]="attackForm.target"
     >
     <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
       @for (option of options; track option) {

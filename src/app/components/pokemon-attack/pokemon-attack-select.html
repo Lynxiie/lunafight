@@ -1,9 +1,9 @@
-<mat-form-field [floatLabel]="'always'">
+<mat-form-field floatLabel='always'>
   <mat-label>Attaque</mat-label>
   <input #attackInput
          type="text"
          matInput
-         [formControl]="attackName"
+         [formField]="field"
          [matAutocomplete]="auto"
          (input)="filter()"
          (focus)="filter()">

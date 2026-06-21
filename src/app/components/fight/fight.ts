@@ -1,4 +1,4 @@
-import {Component, ElementRef, ViewChild, ChangeDetectionStrategy} from '@angular/core';
+import {Component, ElementRef, ViewChild, ChangeDetectionStrategy, EventEmitter, inject} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
 import {MatAutocomplete, MatAutocompleteTrigger, MatOption} from '@angular/material/autocomplete';
@@ -11,6 +11,11 @@ import {MatDivider} from '@angular/material/divider';
 import {MatButtonToggle, MatButtonToggleChange, MatButtonToggleGroup} from '@angular/material/button-toggle';
 import {NgForOf} from '@angular/common';
 import {MatSelect, MatSelectChange} from '@angular/material/select';
+import {ActionSwitch} from '../action-switch/action-switch';
+import {ActionObject} from '../action-object/action-object';
+import {ActionType} from '../action-type/action-type';
+import {MatButton} from '@angular/material/button';
+import {Actions} from '../../services/actions';
 
 @Component({
   selector: 'app-fight',
@@ -34,7 +39,11 @@ import {MatSelect, MatSelectChange} from '@angular/material/select';
     MatButtonToggle,
     FormsModule,
     NgForOf,
-    MatSelect
+    MatSelect,
+    ActionSwitch,
+    ActionObject,
+    ActionType,
+    MatButton
   ],
   templateUrl: './fight.html',
   standalone: true,
@@ -42,6 +51,8 @@ import {MatSelect, MatSelectChange} from '@angular/material/select';
   styleUrl: './fight.scss'
 })
 export class Fight {
+
+  private actionService = inject(Actions);
 
   playerActions = 1;
   foeActions = 1;
@@ -59,5 +70,11 @@ export class Fight {
     const split = newValue.split("-");
     this.playerActions = Number(split[0]);
     this.foeActions = Number(split[1]);
+  }
+
+
+  launchFight() {
+    console.log('toto')
+    console.log(this.actionService.attackModel())
   }
 }

@@ -17,7 +17,7 @@
 <ng-container>
   @for (index of getPlayerActions(); track index) {
     <h3>Action numéro {{index + 1}}</h3>
-    <app-action-attack></app-action-attack>
+    <app-action-type type="player" [index]="index"></app-action-type>
   }
 </ng-container>
 
@@ -29,6 +29,8 @@
 <ng-container>
   @for (index of getFoeActions(); track index) {
     <h3>Action numéro {{index + 1}}</h3>
-    <app-action-attack></app-action-attack>
+    <app-action-type></app-action-type>
   }
 </ng-container>
+
+<button mat-raised-button color="primary" (click)="launchFight()">Combaaaaat !</button>

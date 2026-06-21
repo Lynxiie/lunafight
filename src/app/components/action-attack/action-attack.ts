@@ -1,4 +1,4 @@
-import {Component, ElementRef, ViewChild, ChangeDetectionStrategy} from '@angular/core';
+import {Component, ElementRef, ViewChild, ChangeDetectionStrategy, signal, inject} from '@angular/core';
 import {MatCheckbox} from "@angular/material/checkbox";
 import {MatFormField, MatInput, MatLabel} from "@angular/material/input";
 import {MatRadioButton, MatRadioGroup} from "@angular/material/radio";
@@ -9,6 +9,9 @@ import {MatAutocomplete, MatAutocompleteTrigger, MatOption} from '@angular/mater
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {MatSelect} from '@angular/material/select';
 import {CranInput} from '../cran-input/cran-input';
+import {AttackModel} from '../../model/actions';
+import {form, FormField, max, min, required, validate} from '@angular/forms/signals';
+import {Actions} from '../../services/actions';
 
 @Component({
   selector: 'app-action-attack',
@@ -28,7 +31,8 @@ import {CranInput} from '../cran-input/cran-input';
     MatOption,
     ReactiveFormsModule,
     MatSelect,
-    CranInput
+    CranInput,
+    FormField
   ],
   templateUrl: './action-attack.html',
   standalone: true,
@@ -36,6 +40,8 @@ import {CranInput} from '../cran-input/cran-input';
   styleUrl: './action-attack.scss'
 })
 export class ActionAttack {
+
+  private actionService = inject(Actions);
 
   @ViewChild('targetInput')
   input: ElementRef<HTMLInputElement> | undefined;
@@ -73,6 +79,26 @@ export class ActionAttack {
     "Voltageôle",
     "Vortex Magma",
   ];
+
+  attackForm = form(this.actionService.attackModel, (schemaPath) => {
+    min(schemaPath.atk, 0);
+    required(schemaPath.atk);
+
+    min(schemaPath.atkCran, -6);
+    max(schemaPath.atkCran, 6);
+
+    validate(schemaPath.spriteUrl, ({value}) => {
+      if (!value().startsWith('http://') && !value().startsWith('https://')) {
+        return {
+          kind: 'https',
+          message: 'URL must start with https://',
+        };
+      }
+
+      return null;
+    });
+
+  });
 
   addPokemon($event: FocusEvent) {
     const input = $event.target as HTMLInputElement;

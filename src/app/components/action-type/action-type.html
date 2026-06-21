@@ -1,0 +1,13 @@
+<mat-button-toggle-group (change)="changeActionType($event)" >
+  <mat-button-toggle value="attack" checked>Attaque</mat-button-toggle>
+  <mat-button-toggle value="switch">Switch</mat-button-toggle>
+  <mat-button-toggle value="object">Objet</mat-button-toggle>
+</mat-button-toggle-group>
+
+@if (actionType === 'attack') {
+  <app-action-attack></app-action-attack>
+} @else if (actionType === 'switch') {
+  <app-action-switch></app-action-switch>
+} @else if (actionType === 'object') {
+  <app-action-object></app-action-object>
+}

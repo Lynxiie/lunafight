@@ -1,9 +1,16 @@
+<!--{{attackForm.spriteUrl()}}-->
+<!--{{attackForm.spriteUrl().invalid()}}-->
+
+<!--@if (attackForm.spriteUrl().invalid()) {-->
+<!--    <p>{{attackForm.spriteUrl().errors()[0]}}</p>-->
+<!--}-->
+
 <div class="grid-container-top">
   <app-pokemon-select (focusout)="addPokemon($event)" class="pokemon-column"></app-pokemon-select>
 
   <mat-form-field [floatLabel]="'always'" class="sprite-url-column">
     <mat-label>Sprite URL (sprite par défaut si non rempli)</mat-label>
-    <input matInput matNativeControl type="url">
+    <input matInput matNativeControl type="url" [formField]="attackForm.spriteUrl">
   </mat-form-field>
 
 </div>
@@ -11,57 +18,57 @@
 <div class="grid-container">
   <mat-form-field [floatLabel]="'always'">
     <mat-label>NIV</mat-label>
-    <input matInput matNativeControl type="number" min="5" max="100" required>
+    <input matInput matNativeControl type="number" [formField]="attackForm.level">
   </mat-form-field>
 
   <mat-form-field [floatLabel]="'always'">
     <mat-label>PV actuel</mat-label>
-    <input matInput matNativeControl type="number" min="0" required>
+    <input matInput matNativeControl type="number" [formField]="attackForm.pvActual">
   </mat-form-field>
 
   <mat-form-field [floatLabel]="'always'">
     <mat-label>PV max</mat-label>
-    <input matInput matNativeControl type="number" min="0" required>
+    <input matInput matNativeControl type="number" [formField]="attackForm.pvMax">
   </mat-form-field>
 
   <mat-form-field [floatLabel]="'always'">
     <mat-label>ATK (base)</mat-label>
-    <input matInput matNativeControl type="number" min="0" required>
+    <input matInput matNativeControl type="number" [formField]="attackForm.atk">
   </mat-form-field>
 
-  <app-cran-input [label]="'ATK (cran)'"></app-cran-input>
+  <app-cran-input [label]="'ATK (cran)'" [field]="attackForm.atkCran"></app-cran-input>
 
   <mat-form-field [floatLabel]="'always'">
     <mat-label>DEF (base)</mat-label>
-    <input matInput matNativeControl type="number" min="0" required>
+    <input matInput matNativeControl type="number" [formField]="attackForm.def">
   </mat-form-field>
 
-  <app-cran-input [label]="'DEF (cran)'"></app-cran-input>
+<!--  <app-cran-input [label]="'DEF (cran)'" [formFieldInput]="attackForm.defCran"></app-cran-input>-->
 
   <mat-form-field [floatLabel]="'always'">
     <mat-label>ATK SPE (base)</mat-label>
-    <input matInput matNativeControl type="number" min="0" required>
+    <input matInput matNativeControl type="number" [formField]="attackForm.atkSpe">
   </mat-form-field>
 
-  <app-cran-input [label]="'ATK SPE (cran)'"></app-cran-input>
+<!--  <app-cran-input [label]="'ATK SPE (cran)'" [formFieldInput]="attackForm.atkSpeCran"></app-cran-input>-->
 
   <mat-form-field [floatLabel]="'always'">
     <mat-label>DEF SPE (base)</mat-label>
-    <input matInput matNativeControl type="number" min="0" required>
+    <input matInput matNativeControl type="number" [formField]="attackForm.defSpe">
   </mat-form-field>
 
-  <app-cran-input [label]="'DEF SPE (cran)'"></app-cran-input>
+<!--  <app-cran-input [label]="'DEF SPE (cran)'" [formFieldInput]="attackForm.defSpeCran"></app-cran-input>-->
 
   <mat-form-field [floatLabel]="'always'">
     <mat-label>VIT (base)</mat-label>
-    <input matInput matNativeControl type="number" min="0" required>
+    <input matInput matNativeControl type="number" [formField]="attackForm.vit">
   </mat-form-field>
 
-  <app-cran-input [label]="'VIT (cran)'"></app-cran-input>
+<!--  <app-cran-input [label]="'VIT (cran)'" [formFieldInput]="attackForm.vitCran"></app-cran-input>-->
 
-  <app-cran-input [label]="'PREC'"></app-cran-input>
+<!--  <app-cran-input [label]="'PREC'" [formFieldInput]="attackForm.prec"></app-cran-input>-->
 
-  <app-cran-input [label]="'ESQ'"></app-cran-input>
+<!--  <app-cran-input [label]="'ESQ'" [formFieldInput]="attackForm.esq"></app-cran-input>-->
 
 </div>
 
